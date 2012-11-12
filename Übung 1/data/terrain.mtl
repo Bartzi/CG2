@@ -1,0 +1,22 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 5 5.0.6.1889 Release
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl PaloDuroCanyonGE2_terrain_872x8
+Ka 0 0 0
+Kd 0.8 0.8 0.8
+Ks 0.5 0.5 0.5
+illum 2
+Ns 5.88235
+map_Kd terrain_872x810.bmp
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
