@@ -13,13 +13,15 @@ varying vec3 v3NormalECS;
 
 void main(void)
 {
-	vec4 v4FragmentColor = vec4(0.75, 0.75, 0.75, 1.0);
+	//vec4 v4FragmentColor = vec4(0.75, 0.75, 0.75, 1.0);
+	vec4 v4FragmentColor = vec4(1.0, 0.0, 0.0, 1.0);
 
 	//
 	// Samplen der Texture unter Verwendung Generierter Texturkoordinaten
 	//
     // C_terrain
 	vec4 v4SampleTerrain  = texture2D(samplerTerrain, vec2(gl_TexCoord[0].s, 1.0 - gl_TexCoord[0].t));
+	//vec4 v4SampleTerrain  = texture2D(samplerTerrain, vec2(gl_TexCoord[0].s, gl_TexCoord[0].t));
     // C_gradient
 	vec4 v4SampleGradient = texture1D(samplerGradient, gl_TexCoord[1].p);
 
@@ -32,6 +34,8 @@ void main(void)
 	//
 	// Aufgabe 1.e - Verblenden mit Gradient
 	// 
+
+	v4FragmentColor = mix(v4SampleTerrain, v4SampleGradient, 0.3);
 	
 	//
 	// Setzen der Fragmentfarbe

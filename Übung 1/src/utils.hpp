@@ -110,9 +110,9 @@ loadTextureRAW1D(const char * filename, bool wrap, unsigned int width, unsigned 
 	GET_GLERROR(0);
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
 	GET_GLERROR(0);
-	glTexParameteri ( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, wrap ? GL_REPEAT : GL_CLAMP );
+	glTexParameteri ( GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, static_cast<GLfloat>(wrap ? GL_REPEAT : GL_CLAMP) );
 	GET_GLERROR(0);
-	glTexParameteri ( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, wrap ? GL_REPEAT : GL_CLAMP );
+	glTexParameteri ( GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, static_cast<GLfloat>(wrap ? GL_REPEAT : GL_CLAMP) );
 	GET_GLERROR(0);
 	gluBuild1DMipmaps( GL_TEXTURE_1D, depth, width, (depth == 1) ? GL_LUMINANCE : GL_RGB, GL_UNSIGNED_BYTE, data );
 

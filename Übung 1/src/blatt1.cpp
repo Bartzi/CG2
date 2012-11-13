@@ -277,9 +277,9 @@ initShader(void)
 	int samplerGradient = glGetUniformLocationARB(g_terrainProgram, "samplerGradient");
 	GET_GLERROR(0);
 
-	glUniform1i(samplerTerrain, g_texTerrain);
+	glUniform1i(samplerTerrain, 0);
 	GET_GLERROR(0);
-	glUniform1i(samplerGradient, g_texGradient);
+	glUniform1i(samplerGradient, 1);
 	GET_GLERROR(0);
     //
     // Aufgabe 1.b - End
