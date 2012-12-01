@@ -1,0 +1,10 @@
+A -> abs
+B -> sign
+C -> min
+D -> max
+E -> clamp
+F -> step
+G -> floor
+H -> smoothstep
+I -> fract
+J -> mod
