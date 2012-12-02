@@ -23,7 +23,8 @@ Lib3dsFile* reflective3DSFile;
 
 const char* cityFileName = "./data/megacity/city.3ds";
 const char* reflectiveFileName  = "./data/sphere.3ds";
-//const char* reflectiveFileName  = "./data/bunny.3ds";
+//const char* reflectiveFileName  = "./data/reflective/bunny.3ds";
+//const char* reflectiveFileName  = "./data/reflective/cube.3ds";
 
 //
 // Cube Map Textures
@@ -259,7 +260,12 @@ initTexture(void)
     ///////////////////////////////////////////////////////////////////////////
     //
     // Init static cube map texture
-	//
+    //
+    glGenTextures( 1, &g_staticCubeMap);
+
+    //
+    // Lösung Aufgabe 1.1....
+    //
 
 	FILE* file;
 	char* data;
@@ -269,7 +275,6 @@ initTexture(void)
 
 	data = (char*) malloc(width * height * depth);
 
-    glGenTextures( 1, &g_staticCubeMap);
 	GET_GLERROR(0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, g_staticCubeMap);
 	GET_GLERROR(0);
@@ -352,6 +357,7 @@ initFrameBufferObjects(void)
     //
     // Aufgabe 2.1 ...
     //
+
 	glBindTexture(GL_TEXTURE_CUBE_MAP, g_dynamicCubeMapColor);
 	GET_GLERROR(0);
 
@@ -370,7 +376,6 @@ initFrameBufferObjects(void)
 	GET_GLERROR(0);
 	glGenerateMipmap(GL_TEXTURE_CUBE_MAP);
 	GET_GLERROR(0);
-
 
     ///////////////////////////////////////////////////////////////////////////
     //
@@ -391,6 +396,7 @@ initFrameBufferObjects(void)
     //
     // Aufgabe 2.2 ...
     //
+
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, g_renderBufferDepth);
 	for(int i = 0; i <= 5; i++)
 	{
@@ -398,7 +404,6 @@ initFrameBufferObjects(void)
 		GLenum side = GL_TEXTURE_CUBE_MAP_POSITIVE_X + i;
 		glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, side, g_dynamicCubeMapColor, 0);
 	}
-
 
     return;
 }
@@ -410,6 +415,7 @@ updateFBOCameras(Camera camera)
     //
     // Aufgabe 2.3
     //
+
 	g_fboCameras[RIGHT].position = camera.position;
 	g_fboCameras[RIGHT].direction = vec3(-1.0, 0.0, 0.0);
 	g_fboCameras[RIGHT].up = vec3(0.0, -1.0, 0.0);
@@ -478,6 +484,7 @@ renderSkyBox(void)
     //
     // Lösung Aufgabe 1.2...
     //
+
 	glBegin(GL_QUADS);
 		glVertex3f(5.0, 5.0, 5.0);
 		glVertex3f(5.0, 5.0, -5.0);
@@ -518,7 +525,7 @@ renderSkyBox(void)
 		glVertex3f(-5.0, 5.0, -5.0);
 		glVertex3f(-5.0, -5.0, -5.0);
 		glVertex3f(5.0, -5.0, -5.0);
-	glEnd();
+	glEnd();    
 
     glPopMatrix();
 
