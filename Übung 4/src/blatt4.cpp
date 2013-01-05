@@ -144,7 +144,11 @@ renderFromLightSource(unsigned int lightID, unsigned int mapID)
     lightFrom = lightDir;
 	lightTo = vec3(0.0f, 0.0f, 0.0f);
 
-	//
+	/*
+	 * für den up-Vektor werden als x und z Koordinate die Werte des Vektors zwischen
+	 * lightFrom und lighTo genommen... was nun noch fehlt ist ein y-Wert, sodass
+	 * das Punktprodukt von lightVec und dem lightUp = 0 ist.
+	 */
 
 	vec3 lightVec = lightTo - lightFrom;
 
