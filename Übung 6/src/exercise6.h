@@ -11,7 +11,6 @@ class Rect;
 
 class Program;
 class FrameBufferObject;
-class NodeIDHandler;
 
 class Exercise6
 {
